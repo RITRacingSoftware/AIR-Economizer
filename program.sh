@@ -11,7 +11,9 @@ avr-gcc -Os -mmcu=attiny85 -ffunction-sections -fdata-sections -Wl,--gc-sections
 avr-objcopy -O ihex -R .eeprom economizer.elf economizer.ihex
 
 # Terminate open screen sessions for uploading
-screen -X "quit";
+if command -v screen 2>&1 > /dev/null; then 
+    screen -X "quit";
+fi
 
 read -p "Press enter to upload"
 echo "Uploading for ATtiny85"
